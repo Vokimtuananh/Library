@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+        }
+        header {
+            text-align: center;
+            background-color: #4caf50;
+            padding: 20px;
+            color: white;
+        }
+        h1 {
+            margin: 0;
+        }
+        section {
+            margin: 20px 0;
+        }
+        form input, form button {
+            padding: 10px;
+            margin: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        input[type="text"] {
+            width: 48%;
+            display: inline-block;
+        }
+        input[type="number"] {
+            width: 48%;
+            display: inline-block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button.delete {
+            background-color: red;
+            color: white;
+        }
+        button.delete:hover {
+            background-color: darkred;
+        }
+        #loginSection {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Thư viện PTIT</h1>
+    </header>
+    <section class="role-selection">
+        <h2>Chọn vai trò của bạn</h2>
+        <button onclick="setRole('reader')">Người đọc</button>
+        <button onclick="showLogin()">Thủ thư</button>
+    </section>
+    <section id="loginSection">
+        <h2>Đăng nhập Thủ thư</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Tên đăng nhập" required>
+            <input type="password" id="password" placeholder="Mật khẩu" required>
+            <button type="submit">Đăng nhập</button>
+        </form>
+    </section>
+    <section class="add-book" id="addBookSection" style="display: none;">
+        <h2>Thêm sách mới</h2>
+        <form id="addBookForm">
+            <input type="text" id="bookTitle" placeholder="Tiêu đề sách" required>
+            <input type="text" id="bookAuthor" placeholder="Tác giả" required>
+            <input type="number" id="bookYear" placeholder="Năm xuất bản" required>
+            <button type="submit">Thêm sách</button>
+        </form>
+    </section>
+    <section class="search-book">
+        <h2>Tìm sách</h2>
+        <input type="text" id="searchInput" placeholder="Nhập tên sách">
+    </section>
+    <section class="book-list">
+        <h2>Các đầu sách</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tiêu đề</th>
+                    <th>Tác giả</th>
+                    <th>Năm xuất bản</th>
+                    <th id="actionColumn">Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="bookList">
+
+            </tbody>
+        </table>
+    </section>
+    <script>
+        function setRole(role) {
+            document.querySelector(".role-selection").style.display = "none";
+
+            if (role === 'reader') {
+                document.getElementById('addBookSection').style.display = 'none';  
+                document.getElementById('actionColumn').style.display = 'none';   
+            } else {
+                showLogin(); 
+            }
+        }
+        function showLogin() {
+            document.getElementById('loginSection').style.display = 'block';
+        }
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            if (username === '12345' && password === '1') {
+                document.getElementById('loginSection').style.display = 'none';  
+                document.getElementById('addBookSection').style.display = 'block';  
+                document.getElementById('actionColumn').style.display = 'table-cell';
+            } else {
+                alert('Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin.');
+            }
+        })
+        
+        document.getElementById("addBookForm").addEventListener("submit", function(event){
+            event.preventDefault();
+            const bookTitle = document.getElementById("bookTitle").value;
+            const bookAuthor = document.getElementById("bookAuthor").value;
+            const bookYear = document.getElementById("bookYear").value;
+            if (bookTitle && bookAuthor && bookYear) {
+                addBook(bookTitle, bookAuthor, bookYear);
+                clearForm();
+            }
+        });
+        function addBook(title, author, year) {
+            const bookList = document.getElementById("bookList");
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${title}</td>
+                <td>${author}</td>
+                <td>${year}</td>
+                <td><button class="delete" onclick="deleteBook(this)">Xóa</button></td>
+            `;
+            bookList.appendChild(row);
+        }
+        function clearForm() {
+            document.getElementById("bookTitle").value = '';
+            document.getElementById("bookAuthor").value = '';
+            document.getElementById("bookYear").value = '';
+        }
+        function deleteBook(button) {
+            const row = button.closest("tr");
+            row.remove();
+        }
+
+        document.getElementById("searchInput").addEventListener("keyup", function() {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll("#bookList tr");
+            rows.forEach(function(row) {
+                const title = row.cells[0].textContent.toLowerCase();
+                if (title.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

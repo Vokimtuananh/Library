@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện UDU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 0;
+        }
+        header .logo h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 10px 0;
+        }
+        nav ul li {
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        nav ul li a:hover {
+            color: #FF9900;
+        }
+        .banner {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #e67514;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .banner h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .banner p {
+            font-size: 1.5rem;
+        }
+        .banner:hover {
+            background-color: #7B4019
+        }
+        .featured-books {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #D3ECCD;
+        }
+        .featured-books h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        .book-list {
+            display: flex;
+            justify-content: space-evenly;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .book {
+            width: 250px;
+            padding: 15px;
+            background-color: #06923E;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .book img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .book h3 {
+            margin-top: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        .book:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+        .book:hover img {
+            transform: scale(1.1);
+        }
+        footer {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .login-form {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+        .login-form .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 350px;
+            text-align: center;
+        }
+        .login-form input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .login-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .login-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Thư viện UDU</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Trang chủ.html">Trang chủ</a></li>
+                <li><a href="Tra cứu.html">Tra cứu</a></li>
+                <li><a href="Dịch vụ.html">Dịch vụ</a></li>
+                <li><a href="Information.html">Hướng dẫn</a></li>
+                <li><a href="Contact.html">Liên hệ</a></li>
+                <li><a href="javascript:void(0);" id="loginLink" onclick="showLoginForm()">Đăng nhập</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="banner">
+        <h2>Chào mừng bạn đến với Thư viện UDU</h2>
+        <p><i>"Sách là ngọn đèn sáng bất diệt của trí tuệ con người"</i></p>
+    </section>
+    <section class="featured-books">
+        <h2>Sách hay mỗi ngày</h2>
+        <div class="book-list">
+            <div class="book">
+                <img src="Thép đã tôi thế đấy.jpg" alt="Thép đã tôi thế đấy">
+                <h3>Thép đã tôi thế đấy</h3>
+            </div>
+            <div class="book">
+                <img src="Muôn kiếp nhân sinh.jpg" alt="Muôn kiếp nhân sinh">
+                <h3>Muôn kiếp nhân sinh</h3>
+            </div>
+            <div class="book">
+                <img src="Mắt biếc.jpg" alt="Mắt biếc">
+                <h3>Mắt biếc</h3>
+            </div>
+        </div>
+    </section>
+    <section class="image-section" style="margin-top: 30px;">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">Hoạt động tình nguyện</h2>
+        <div class="image-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 40px;">
+            <div class="image-box" style="width: 30%; border-radius: 10px; overflow: hidden; background-color: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                <img src="Mượn sách miễn phí.jpg" alt="Mượn sách miễn phí" style="width: 100%; height: 70%; object-fit: cover;">
+                <div style="text-align: center; padding: 10px; font-size: 1rem; font-weight: 600;">Mượn sách miễn phí</div>
+                <p style="text-align: center; padding: 10px; font-size: 0.9rem; color: #666;">Cung cấp sách miễn phí cho cộng đồng để tạo thói quen đọc sách.</p>
+            </div>
+            <div class="image-box" style="width: 30%; border-radius: 10px; overflow: hidden; background-color: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                <img src="Đổi sách miễn phí.jpg" alt="Đổi sách miễn phí" style="width: 100%; height: 70%; object-fit: cover;">
+                <div style="text-align: center; padding: 10px; font-size: 1rem; font-weight: 600;">Đổi sách lấy cây</div>
+                <p style="text-align: center; padding: 10px; font-size: 0.9rem; color: #666;">Khuyến khích mọi người đổi sách để trồng cây, bảo vệ môi trường.</p>
+            </div>
+            <div class="image-box" style="width: 30%; border-radius: 10px; overflow: hidden; background-color: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                <img src="Xây dựng tủ sách vùng cao.jpg" alt="Xây dựng tủ sách vùng cao" style="width: 100%; height: 70%; object-fit: cover;">
+                <div style="text-align: center; padding: 10px; font-size: 1rem; font-weight: 600;">Xây dựng tủ sách vùng cao</div>
+                <p style="text-align: center; padding: 10px; font-size: 0.9rem; color: #666;">Góp phần tạo ra thư viện nhỏ cho trẻ em vùng cao, giúp các em tiếp cận sách vở.</p>
+            </div>
+            <div class="image-box" style="width: 30%; border-radius: 10px; overflow: hidden; background-color: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                <img src="Tặng sách các tổ chức.jpg" alt="Tặng sách các tổ chức" style="width: 100%; height: 70%; object-fit: cover;">
+                <div style="text-align: center; padding: 10px; font-size: 1rem; font-weight: 600;">Tặng sách các tổ chức</div>
+                <p style="text-align: center; padding: 10px; font-size: 0.9rem; color: #666;">Tặng sách cho các tổ chức từ thiện và các trường học có hoàn cảnh khó khăn.</p>
+            </div>
+            <div class="image-box" style="width: 30%; border-radius: 10px; overflow: hidden; background-color: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                <img src="Cuộc thi cho bạn đọc.jpg" alt="Cuộc thi cho bạn đọc" style="width: 100%; height: 70%; object-fit: cover;">
+                <div style="text-align: center; padding: 10px; font-size: 1rem; font-weight: 600;">Cuộc thi cho bạn đọc</div>
+                <p style="text-align: center; padding: 10px; font-size: 0.9rem; color: #666;">Tổ chức các cuộc thi để khuyến khích và phát triển thói quen đọc sách trong cộng đồng.</p>
+            </div>
+            <div class="image-box" style="width: 30%; border-radius: 10px; overflow: hidden; background-color: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                <img src="Các hoạt động tình nguyện khác.jpg" alt="Các hoạt động tình nguyện khác" style="width: 100%; height: 70%; object-fit: cover;">
+                <div style="text-align: center; padding: 10px; font-size: 1rem; font-weight: 600;">Các hoạt động tình nguyện khác</div>
+                <p style="text-align: center; padding: 10px; font-size: 0.9rem; color: #666;">Tham gia vào các hoạt động tình nguyện khác nhằm giúp đỡ cộng đồng và nâng cao ý thức xã hội.</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Thư viện UDU - Bản quyền thuộc UDU</p>
+    </footer>
+    <div class="login-form" id="loginForm">
+        <div class="form-container">
+            <h2>Đăng nhập</h2>
+            <input type="text" id="cardNumber" placeholder="Mã thẻ bạn đọc">
+            <input type="password" id="password" placeholder="Mật khẩu">
+            <button onclick="login()">Đăng nhập</button>
+            <button onclick="closeLoginForm()">Đóng</button>
+        </div>
+    </div>
+
+    <script>
+        function showLoginForm() {
+            document.getElementById('loginForm').style.display = 'flex';
+        }
+        function closeLoginForm() {
+            document.getElementById('loginForm').style.display = 'none';
+        }
+        function login() {
+            var cardNumber = document.getElementById('cardNumber').value;
+            var password = document.getElementById('password').value;
+            if (cardNumber === '12345' && password === '1') {
+                alert('Đăng nhập thành công');
+                document.getElementById('loginLink').innerText = "Xin chào " + cardNumber;
+                closeLoginForm();
+            } else {
+                alert('Mã thẻ hoặc mật khẩu không đúng');
+            }
+        }
+    </script>
+
+</body>
+</html>
